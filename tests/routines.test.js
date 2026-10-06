@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {routines,foundationRoutines,plans,weekKey,sessionKey,isSessionKey,routineForSession,planForSession} from '../routines.js';
+import {routines,foundationRoutines,homeRoutines,plans,weekKey,sessionKey,isSessionKey,routineForSession,planForSession} from '../routines.js';
 import {figure} from '../illustrations.js';
 import {readFileSync,existsSync} from 'node:fs';
 test('calendar starts Monday and distinguishes new weeks',()=>{assert.equal(weekKey(new Date(2026,9,6)),'2026-10-05');assert.equal(weekKey(new Date(2026,9,11)),'2026-10-05');assert.equal(weekKey(new Date(2026,9,12)),'2026-10-12');assert.equal(weekKey(new Date(2026,0,1)),'2025-12-29');assert.notEqual(sessionKey(0,new Date(2026,9,5)),sessionKey(0,new Date(2026,9,12)));});
@@ -23,4 +23,18 @@ test('full gym covers barbell, cable, upper machines and lower machines with set
  assert.equal(plans.gym.routines.length,7);assert.equal(plans.foundation.routines.length,7);
  for(const index of [2,5,6])assert.equal(routines[index],foundationRoutines[index]);
  assert.equal(foundationRoutines[2].exercises[1].weighted,false);
+});
+
+test('home plan uses only the dumbbell pair and floor with chest recovery across weeks',()=>{
+ assert.equal(homeRoutines.length,7);
+ for(const day of homeRoutines)for(const e of day.exercises){assert.match(e.equipment,/dumbbell|floor/i);assert.doesNotMatch(e.equipment,/bench|cable|machine|band|rack/i);assert.equal(e.cues.length,3);assert.ok(e.sets>=1&&e.sets<=3);}
+ const chestDays=homeRoutines.flatMap((day,i)=>day.category==='HOME / CHEST'?[i]:[]);assert.deepEqual(chestDays,[0,3,5]);
+ for(let i=0;i<chestDays.length;i++)assert.ok((chestDays[(i+1)%chestDays.length]+7-chestDays[i])%7>=2);
+ for(const i of chestDays){assert.ok(homeRoutines[i].exercises.slice(0,2).every(e=>e.muscles.startsWith('Chest')));assert.ok(homeRoutines[i].exercises.some(e=>e.name==='Push-ups'));assert.ok(homeRoutines[i].exercises.some(e=>e.name==='Dumbbell floor press'));}
+ const push=homeRoutines[0].exercises.find(e=>e.name==='Push-ups');assert.equal(push.easier.name,'Knee push-ups');assert.equal(push.easier.weighted,false);
+});
+test('home session keys do not change or share gym and original progress',()=>{
+ const date=new Date(2026,9,6),home=sessionKey(0,date,'home'),gym=sessionKey(0,date,'gym'),legacy=sessionKey(0,date,'foundation');
+ assert.equal(home,'2026-10-05:0:home-v1');assert.ok(isSessionKey(home));assert.equal(new Set([home,gym,legacy]).size,3);
+ assert.equal(planForSession(home),'home');assert.equal(routineForSession(home).exercises[0].name,'Dumbbell floor press');assert.equal(gym,'2026-10-05:0:gym-v1');assert.equal(legacy,'2026-10-05:0');
 });

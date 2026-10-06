@@ -333,6 +333,42 @@ export const demos = {
     "thumbnail": "https://i.ytimg.com/vi/syYBcVbEAFk/hqdefault.jpg",
     "start": 0,
     "end": 30
+  },
+  "Dumbbell floor press": {
+    "id": "qHCI9rK7HqM",
+    "source": "https://www.youtube.com/watch?v=qHCI9rK7HqM",
+    "title": "How To Do A DUMBBELL FLOOR PRESS | Exercise Demonstration Video and Guide",
+    "author": "Live Lean TV Daily Exercises",
+    "thumbnail": "https://i.ytimg.com/vi/qHCI9rK7HqM/hqdefault.jpg",
+    "start": 0,
+    "end": 30
+  },
+  "Dumbbell bent-over row": {
+    "id": "htlLvE3hMt8",
+    "source": "https://www.youtube.com/watch?v=htlLvE3hMt8",
+    "title": "Two arm dumbbell bent-over-row",
+    "author": "Fit2TalkExercises",
+    "thumbnail": "https://i.ytimg.com/vi/htlLvE3hMt8/hqdefault.jpg",
+    "start": 0,
+    "end": 30
+  },
+  "Push-ups": {
+    "id": "WDIpL0pjun0",
+    "source": "https://www.youtube.com/watch?v=WDIpL0pjun0",
+    "title": "How to do a Push-Up | Proper Form & Technique | NASM",
+    "author": "National Academy of Sports Medicine (NASM)",
+    "thumbnail": "https://i.ytimg.com/vi/WDIpL0pjun0/hqdefault.jpg",
+    "start": 0,
+    "end": 30
+  },
+  "Knee push-ups": {
+    "id": "sd-QlITKgtk",
+    "source": "https://www.youtube.com/watch?v=sd-QlITKgtk",
+    "title": "Knee Push-Up Technique: Quick Demo",
+    "author": "Fitness By Physio",
+    "thumbnail": "https://i.ytimg.com/vi/sd-QlITKgtk/hqdefault.jpg",
+    "start": 0,
+    "end": 30
   }
 };
 const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

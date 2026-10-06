@@ -61,10 +61,47 @@ export const routines=[
  {...foundationRoutines[4],title:'Build your lower-body engine',description:'Train your squat and hinge, then finish with machine and cable control.',time:50,exercises:[smith,fromBase(4,'Dumbbell Romanian deadlift'),legCurl,abduction,pallof]},
  foundationRoutines[5],foundationRoutines[6]
 ];
-export const plans={gym:{label:'Full gym',routines},foundation:{label:'Dumbbells + cables',routines:foundationRoutines}};
-export const isSessionKey=key=>/^\d{4}-\d{2}-\d{2}:[0-6](?::gym-v1)?$/.test(key);
-export const planForSession=key=>key.endsWith(':gym-v1')?'gym':'foundation';
+const homeExercise=(exercise,overrides={})=>({...exercise,...overrides});
+const floorPress={...e('Dumbbell floor press',3,'8–15',90,'bench','Chest · triceps',[
+ 'Lie on your back with knees bent and feet planted; keep wrists over elbows.',
+ 'Lower slowly until your upper arms gently touch the floor, with elbows about 45° from your body.',
+ 'Press the dumbbells above your chest without bouncing or letting them collide.'
+]),equipment:'One pair of dumbbells + floor space',weighted:true,loadHint:'Per dumbbell',setup:'Sit on the floor with the dumbbells close to your thighs, then carefully lie back and position them beside your chest. Use only a weight you can position and lower safely. If your pair is too heavy, use the push-up option instead.'};
+const homeRow={...e('Dumbbell bent-over row',3,'10–15',75,'row','Back · biceps',[
+ 'Soften your knees and hinge at your hips with a neutral spine; let the dumbbells hang below your shoulders.',
+ 'Pull both elbows toward your hips without jerking or lifting your torso.',
+ 'Lower slowly and keep your abdomen braced throughout the set.'
+]),equipment:'One pair of dumbbells',weighted:true,loadHint:'Per dumbbell'};
+const kneePushUps={name:'Knee push-ups',equipment:'Floor space',weighted:false,cues:[
+ 'Place hands slightly wider than shoulders and rest your knees on the floor.',
+ 'Keep a straight line from your knees through your hips to your head as you lower your chest.',
+ 'Press back up with elbows angled away from your ribs; keep your hips from folding.'
+]};
+const pushUps={...e('Push-ups',2,'6–15',90,'plank','Chest · triceps · core',[
+ 'Start with hands just wider than shoulders; brace your abdomen and keep your body in a straight line.',
+ 'Lower your chest with control, keeping elbows roughly 30–45° from your torso.',
+ 'Press the floor away without letting your hips sag. Stop with 1–3 controlled reps left.'
+]),equipment:'Floor space',weighted:false,easier:kneePushUps};
+const homeSquat=homeExercise(fromBase(1,'Goblet squat'),{reps:'10–15',equipment:'One dumbbell'});
+const homeHinge=homeExercise(fromBase(1,'Dumbbell Romanian deadlift'),{reps:'10–15',equipment:'One pair of dumbbells'});
+const homeDeadBug=homeExercise(fromBase(4,'Dead bug'),{equipment:'Floor space'});
+const sideStretch=homeExercise(fromBase(6,'Gentle standing side stretch'),{equipment:'Floor space'});
+const chestOpener=homeExercise(fromBase(2,'Standing chest opener'),{equipment:'Floor space'});
+const homeDay=(day,short,title,focus,time,category,description,exercises)=>({day,short,title,focus,time,category,description,exercises});
+export const homeRoutines=[
+ homeDay('Monday','Chest A','Build your chest foundation.','Chest priority · back · arms',35,'HOME / CHEST','Floor presses first, then push-ups. One pair of dumbbells is all you need.',[floorPress,pushUps,homeRow,homeExercise(fromBase(0,'Dumbbell curl'),{equipment:'One pair of dumbbells'})]),
+ homeDay('Tuesday','Lower','A stronger base at home.','Legs · glutes · core',25,'HOME / BALANCE','Give your chest a break while your lower body puts in the work.',[homeSquat,homeHinge,homeDeadBug]),
+ homeDay('Wednesday','Recover','Make room for recovery.','Gentle mobility · chest recovery',10,'HOME / RECOVERY','Keep these stretches gentle. No pressing today.',[sideStretch,chestOpener]),
+ homeDay('Thursday','Chest B','Push with purpose.','Chest priority · back · arms',35,'HOME / CHEST','Lead with push-ups, then control every floor-press rep.',[pushUps,homeExercise(floorPress,{reps:'10–15',cues:[...floorPress.cues.slice(0,1),'Take about 3 seconds to lower until your upper arms gently meet the floor.','Press smoothly above your chest, keeping your shoulders comfortable.']}),homeRow,homeExercise(fromBase(3,'Dumbbell hammer curl'),{equipment:'One pair of dumbbells'})]),
+ homeDay('Friday','Lower','Balance your week.','Legs · glutes · core',20,'HOME / BALANCE','A shorter lower-body session while your chest recovers.',[homeExercise(homeSquat,{sets:2}),homeExercise(homeHinge,{sets:2}),homeDeadBug]),
+ homeDay('Saturday','Chest C','A little more chest work.','Chest priority · back',25,'HOME / CHEST','A shorter chest session. Skip it if you are still sore or new to the plan.',[pushUps,homeExercise(floorPress,{sets:2,reps:'10–20'}),homeExercise(homeRow,{sets:2})]),
+ homeDay('Sunday','Rest','Rest is part of growing.','Rest · optional gentle mobility',10,'HOME / RECOVERY','Take a full day off pressing. These gentle stretches are optional.',[sideStretch,chestOpener])
+];
+
+export const plans={gym:{label:'Full gym',routines},foundation:{label:'Dumbbells + cables',routines:foundationRoutines},home:{label:'Home · Chest priority',routines:homeRoutines}};
+export const isSessionKey=key=>/^\d{4}-\d{2}-\d{2}:[0-6](?::(?:gym|home)-v1)?$/.test(key);
+export const planForSession=key=>key.endsWith(':home-v1')?'home':key.endsWith(':gym-v1')?'gym':'foundation';
 export const routineForSession=key=>plans[planForSession(key)].routines[Number(key.split(':')[1])];
 
 export function weekKey(date=new Date()){const d=new Date(date.getFullYear(),date.getMonth(),date.getDate());d.setDate(d.getDate()-(d.getDay()+6)%7);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
-export function sessionKey(day,date=new Date(),plan='gym'){return `${weekKey(date)}:${day}${plan==='gym'?':gym-v1':''}`;}
+export function sessionKey(day,date=new Date(),plan='gym'){const suffix={gym:':gym-v1',home:':home-v1',foundation:''}[plan];if(suffix===undefined)throw new RangeError('Unknown workout plan');return `${weekKey(date)}:${day}${suffix}`;}
