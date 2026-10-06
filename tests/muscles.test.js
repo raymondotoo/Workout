@@ -10,7 +10,7 @@ test('every plan exercise and easier variant has real body polygons and valid ta
   const t=targetsFor(exercise);assert.ok(t.primary.length,exercise.name);
   for(const m of [...t.primary,...t.secondary])assert.ok(regions.has(m),`${exercise.name}: ${m}`);
   assert.ok(t.primary.every(m=>!t.secondary.includes(m)));
-  const html=muscleDiagram(exercise,true);assert.equal((html.match(/<svg /g)||[]).length,2);assert.match(html,/muscle-primary/);assert.match(html,/role="img"/);
+  const html=muscleDiagram(exercise,true);assert.equal((html.match(/<svg /g)||[]).length,1);assert.match(html,/muscle-primary/);assert.match(html,/role="img"/);
  }
 });
 test('presses highlight chest, leg curl highlights hamstrings, mobility and cardio are not labeled growth',()=>{

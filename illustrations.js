@@ -1,8 +1,8 @@
 // Original schematic exercise diagrams. Each pair shows start and finish positions.
 export function figure(type,end=false){
-const head=(x,y)=>`<circle cx="${x}" cy="${y}" r="7" fill="#6938d8" stroke="none"/>`;
+const head=(x,y)=>`<circle cx="${x}" cy="${y}" r="7" fill="#183b66" stroke="none"/>`;
 const line=(points)=>`<polyline points="${points}"/>`;
-const weight=(x,y)=>`<path d="M${x-7} ${y}h14m-12 -4v8m10 -8v8" stroke="#f05c66" stroke-width="4"/>`;
+const weight=(x,y)=>`<path d="M${x-7} ${y}h14m-12 -4v8m10 -8v8" stroke="#368dcc" stroke-width="4"/>`;
 let body='';let equip='';
 if(['bench','incline','bridge','deadbug'].includes(type)){
 equip=type==='bench'||type==='incline'?'<path d="M25 61h60M32 61v20M77 61v20" stroke="#b8c4a8"/>':'';
@@ -24,6 +24,6 @@ else if(type==='curl'){body+=line(end?'59,35 44,52 34,34 59,35 73,52 84,34':'59,
 else if(type==='pushdown'){body+=line(end?'59,35 45,50 44,66':'59,35 45,50 30,43')+weight(end?44:30,end?66:43);equip='<path d="M18 82V5h35M35 5v30" stroke="#c1cbb5"/>';}
 else if(type==='stretch'){body+=line(end?'59,35 44,19 50,5 59,35 75,49':'59,35 42,50 33,53 59,35 76,50 85,53');}
 else body+=line('59,35 43,52 40,62 59,35 75,52 78,62');}
-return `<svg viewBox="0 0 120 94" fill="none" role="img" aria-label="${end?'Finish':'Start'} position"><path d="M12 85h96" stroke="#d7dfcd" stroke-width="2"/><g stroke="#6938d8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">${equip}${body}</g></svg>`;
+return `<svg viewBox="0 0 120 94" fill="none" role="img" aria-label="${end?'Finish':'Start'} position"><path d="M12 85h96" stroke="#d7dfcd" stroke-width="2"/><g stroke="#183b66" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">${equip}${body}</g></svg>`;
 }
-export function heroArt(){return `<svg class="hero-art" viewBox="0 0 260 230" fill="none" aria-hidden="true"><circle cx="145" cy="120" r="92" stroke="#d4bef4"/><circle cx="145" cy="120" r="66" stroke="#d4bef4"/><path d="M57 184L217 50" stroke="#d9c5f5"/><g transform="rotate(-32 135 119)"><rect x="82" y="106" width="107" height="26" rx="8" fill="#b38cf2"/><rect x="76" y="78" width="21" height="83" rx="7" fill="#6938d8"/><rect x="60" y="86" width="20" height="68" rx="6" fill="#f05c66"/><rect x="176" y="78" width="21" height="83" rx="7" fill="#6938d8"/><rect x="193" y="86" width="20" height="68" rx="6" fill="#f05c66"/><path d="M84 85v68M184 85v68" stroke="#b993ff" stroke-width="2"/></g><path d="M55 47v16m-8 -8h16M221 176v14m-7 -7h14" stroke="#f05c66" stroke-width="2"/><circle cx="222" cy="59" r="4" fill="#ffbd59"/></svg>`;}
+export function heroArt(){return `<svg class="hero-art" viewBox="0 0 260 230" fill="none" aria-hidden="true"><circle cx="145" cy="120" r="92" stroke="#bed3e8"/><circle cx="145" cy="120" r="66" stroke="#bed3e8"/><path d="M57 184L217 50" stroke="#c7dbed"/><g transform="rotate(-32 135 119)"><rect x="82" y="106" width="107" height="26" rx="8" fill="#7399bc"/><rect x="76" y="78" width="21" height="83" rx="7" fill="#183b66"/><rect x="60" y="86" width="20" height="68" rx="6" fill="#368dcc"/><rect x="176" y="78" width="21" height="83" rx="7" fill="#183b66"/><rect x="193" y="86" width="20" height="68" rx="6" fill="#368dcc"/><path d="M84 85v68M184 85v68" stroke="#a0c3e5" stroke-width="2"/></g><path d="M55 47v16m-8 -8h16M221 176v14m-7 -7h14" stroke="#368dcc" stroke-width="2"/><circle cx="222" cy="59" r="4" fill="#78bcde"/></svg>`;}
