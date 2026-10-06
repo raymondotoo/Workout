@@ -29,7 +29,7 @@ After the first online visit, the app shell and routines work offline. External 
 ## Features
 
 - Seven daily routines: four strength, two cardio/mobility, one recovery.
-- Original SVG start/finish diagrams and exercise-specific cues.
+- Real exercise videos from fitness publishers, with exercise-specific cues.
 - Set tracking, rest countdown, reusable weight logs in kilograms.
 - Monday-based weekly reset, session history, JSON export/import.
 - Responsive desktop and phone layouts, accessible controls, reduced-motion support.
@@ -37,6 +37,12 @@ After the first online visit, the app shell and routines work offline. External 
 
 ## Plan and data
 
-The routine is a general starting plan for healthy adults, not a personalized training prescription. Start with fewer sets if new, leave 2–3 repetitions in reserve, and stop painful movements. Exercise diagrams are schematics, not videos or a substitute for coaching. Cardio sessions total 60 minutes; build toward the [CDC's adult activity guidance](https://www.cdc.gov/physical-activity-basics/guidelines/adults.html) of 150 moderate minutes weekly by adding comfortable activity.
+The routine is a general starting plan for healthy adults, not a personalized training prescription. Start with fewer sets if new, leave 2–3 repetitions in reserve, and stop painful movements. Video demonstrations supplement the form cues; ask a gym trainer to check unfamiliar lifts. Cardio sessions total 60 minutes; build toward the [CDC's adult activity guidance](https://www.cdc.gov/physical-activity-basics/guidelines/adults.html) of 150 moderate minutes weekly by adding comfortable activity.
 
 Progress lives in localStorage on the current device/browser. Export a backup before clearing site data. Imports merge data and preserve existing session and weight entries. No cross-device sync. A new calendar week gets fresh set tracking; weight entries persist. Adjust the plan in `routines.js`; after edits bump the cache version in `sw.js` for deployed clients.
+
+## Exercise videos
+
+Each exercise has a thumbnail and a tap-to-play 30-second video preview. Videos are embedded through YouTube’s privacy-enhanced player and remain hosted by their original creators; no videos are copied or redistributed. The source author and full-video link appear below each player. Clips start muted, play inline on iPhone, and can be replayed. Videos and remote thumbnails require an internet connection. The offline app keeps routines, written form cues, and progress available. Closing a guide removes the player and stops playback.
+
+Sources include [Muscle & Strength](https://www.muscleandstrength.com/exercises/dumbbell-bench-press.html), [NASM](https://www.youtube.com/watch?v=XPPfnSEATJA), [Hospital for Special Surgery](https://www.youtube.com/watch?v=3QZlgJ40LfU), and the other creators credited per exercise in `media.js`. All 24 exercise mappings were verified against official YouTube oEmbed metadata. A creator can later disable embedding; use “Watch full video” if playback is unavailable. Edit `start`/`end` in `media.js` to adjust preview segments.
