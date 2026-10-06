@@ -28,7 +28,9 @@ After the first online visit, the app shell and routines work offline. External 
 
 ## Features
 
-- Seven daily routines: four strength, two cardio/mobility, one recovery.
+- Full gym and Dumbbells + cables plans: four strength days, two cardio/mobility days, one recovery day.
+- Barbell bench press, Smith-machine squat, leg press/curl/extension, pec deck, supported rows, cable curls/pushdowns/Pallof press, and machine shoulder/calf work.
+- Equipment labels, machine setup instructions, and clear load logging (stack weight, total bar + plates, added plates, or per dumbbell).
 - Real exercise videos from fitness publishers, with exercise-specific cues.
 - Set tracking, rest countdown, reusable weight logs in kilograms.
 - Monday-based weekly reset, session history, JSON export/import.
@@ -45,4 +47,10 @@ Progress lives in localStorage on the current device/browser. Export a backup be
 
 Each exercise has a thumbnail and a tap-to-play 30-second video preview. Videos are embedded through YouTube’s privacy-enhanced player and remain hosted by their original creators; no videos are copied or redistributed. The source author and full-video link appear below each player. Clips start muted, play inline on iPhone, and can be replayed. Videos and remote thumbnails require an internet connection. The offline app keeps routines, written form cues, and progress available. Closing a guide removes the player and stops playback.
 
-Sources include [Muscle & Strength](https://www.muscleandstrength.com/exercises/dumbbell-bench-press.html), [NASM](https://www.youtube.com/watch?v=XPPfnSEATJA), [Hospital for Special Surgery](https://www.youtube.com/watch?v=3QZlgJ40LfU), and the other creators credited per exercise in `media.js`. All 24 exercise mappings were verified against official YouTube oEmbed metadata. A creator can later disable embedding; use “Watch full video” if playback is unavailable. Edit `start`/`end` in `media.js` to adjust preview segments.
+Sources include [Muscle & Strength](https://www.muscleandstrength.com/exercises/dumbbell-bench-press.html), [NASM](https://www.youtube.com/watch?v=XPPfnSEATJA), [Hospital for Special Surgery](https://www.youtube.com/watch?v=3QZlgJ40LfU), and the other creators credited per exercise in `media.js`. All 37 exercise mappings were verified against official YouTube oEmbed metadata. A creator can later disable embedding; use “Watch full video” if playback is unavailable. Edit `start`/`end` in `media.js` to adjust preview segments.
+
+## Gym plan and existing progress
+
+Full gym is the default. Use the equipment selector above the days to switch to the original Dumbbells + cables plan. Your selection persists. Each plan tracks sets separately, so sets previously recorded for a dumbbell exercise cannot appear completed for a new machine exercise. Original session keys, histories, backup files, and weights are preserved. History labels show which plan you used. Weekly completed days count each day once across both plans, while total sessions and sets include both.
+
+Machine models vary: follow their adjustment labels and ask gym staff to show the stops and releases. Use a spotter or correctly set rack safeties for barbell bench press; setup cues are included in the movement guide. The program leaves recovery time between repeat upper and lower sessions, consistent with [Mayo Clinic strength-training guidance](https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/strength-training/art-20046670).

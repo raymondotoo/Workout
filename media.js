@@ -216,6 +216,123 @@ export const demos = {
     "thumbnail": "https://i.ytimg.com/vi/vfcUXcREe7g/hqdefault.jpg",
     "start": 0,
     "end": 30
+  },
+  "Barbell bench press": {
+    "id": "rT7DgCr-3pg",
+    "source": "https://www.youtube.com/watch?v=rT7DgCr-3pg",
+    "title": "How To: Barbell Bench Press",
+    "author": "ScottHermanFitness",
+    "thumbnail": "https://i.ytimg.com/vi/rT7DgCr-3pg/hqdefault.jpg",
+    "start": 0,
+    "end": 30
+  },
+  "Machine shoulder press": {
+    "id": "Gkk-6q7Rq-s",
+    "source": "https://www.youtube.com/watch?v=Gkk-6q7Rq-s",
+    "title": "How to Perform the Machine Shoulder Press",
+    "author": "Andrew Kwong (DeltaBolic)",
+    "thumbnail": "https://i.ytimg.com/vi/Gkk-6q7Rq-s/hqdefault.jpg",
+    "start": 0,
+    "end": 30
+  },
+  "Cable biceps curl": {
+    "id": "u9XtfyqeJd4",
+    "source": "https://www.youtube.com/watch?v=u9XtfyqeJd4",
+    "title": "How To Do Standing Cable Bicep Curl | Exercise Demo",
+    "author": "OriGym",
+    "thumbnail": "https://i.ytimg.com/vi/u9XtfyqeJd4/hqdefault.jpg",
+    "start": 0,
+    "end": 30
+  },
+  "Rope triceps pushdown": {
+    "id": "FgXQdSOhpL0",
+    "source": "https://www.youtube.com/watch?v=FgXQdSOhpL0",
+    "title": "Triceps Pushdown With Rope: Demonstration",
+    "author": "StrengthLog",
+    "thumbnail": "https://i.ytimg.com/vi/FgXQdSOhpL0/hqdefault.jpg",
+    "start": 0,
+    "end": 30
+  },
+  "45° leg press": {
+    "id": "q4W4_VJbKW0",
+    "source": "https://www.youtube.com/watch?v=q4W4_VJbKW0",
+    "title": "How To Do A 45 Degree Leg Press",
+    "author": "PureGym",
+    "thumbnail": "https://i.ytimg.com/vi/q4W4_VJbKW0/hqdefault.jpg",
+    "start": 0,
+    "end": 30
+  },
+  "Seated leg curl": {
+    "id": "fK0uZ3KRZRI",
+    "source": "https://www.youtube.com/watch?v=fK0uZ3KRZRI",
+    "title": "Planet Fitness - How To Use Seated Leg Curl Machine",
+    "author": "Planet Fitness Beginner",
+    "thumbnail": "https://i.ytimg.com/vi/fK0uZ3KRZRI/hqdefault.jpg",
+    "start": 0,
+    "end": 30
+  },
+  "Leg extension": {
+    "id": "xd9m2S_Rw4s",
+    "source": "https://www.youtube.com/watch?v=xd9m2S_Rw4s",
+    "title": "Leg Extension Machine Tutorial",
+    "author": "Morgan, M.S., CPT, WFS, FNS",
+    "thumbnail": "https://i.ytimg.com/vi/xd9m2S_Rw4s/hqdefault.jpg",
+    "start": 0,
+    "end": 30
+  },
+  "Standing calf raise machine": {
+    "id": "GAQ-oohMhog",
+    "source": "https://www.youtube.com/watch?v=GAQ-oohMhog",
+    "title": "Standing Calf Raise Machine",
+    "author": "SIU Rec Center",
+    "thumbnail": "https://i.ytimg.com/vi/GAQ-oohMhog/hqdefault.jpg",
+    "start": 0,
+    "end": 30
+  },
+  "Chest-supported machine row": {
+    "id": "_FrrYQxA6kc",
+    "source": "https://www.youtube.com/watch?v=_FrrYQxA6kc",
+    "title": "Machine Chest Supported Row",
+    "author": "Renaissance Periodization",
+    "thumbnail": "https://i.ytimg.com/vi/_FrrYQxA6kc/hqdefault.jpg",
+    "start": 0,
+    "end": 30
+  },
+  "Pec deck chest fly": {
+    "id": "Dbly77Jgbo8",
+    "source": "https://www.youtube.com/watch?v=Dbly77Jgbo8",
+    "title": "How to Seated Machine (Pec Deck) Chest Fly",
+    "author": "Physique Development",
+    "thumbnail": "https://i.ytimg.com/vi/Dbly77Jgbo8/hqdefault.jpg",
+    "start": 0,
+    "end": 30
+  },
+  "Smith machine squat": {
+    "id": "aT-1WbC4YaI",
+    "source": "https://www.youtube.com/watch?v=aT-1WbC4YaI",
+    "title": "Smith Machine Squat: Demonstration",
+    "author": "StrengthLog",
+    "thumbnail": "https://i.ytimg.com/vi/aT-1WbC4YaI/hqdefault.jpg",
+    "start": 0,
+    "end": 30
+  },
+  "Hip abduction machine": {
+    "id": "RHP7HhCyu1s",
+    "source": "https://www.youtube.com/watch?v=RHP7HhCyu1s",
+    "title": "Hip Abduction Machine: Demonstration",
+    "author": "StrengthLog",
+    "thumbnail": "https://i.ytimg.com/vi/RHP7HhCyu1s/hqdefault.jpg",
+    "start": 0,
+    "end": 30
+  },
+  "Cable Pallof press": {
+    "id": "syYBcVbEAFk",
+    "source": "https://www.youtube.com/watch?v=syYBcVbEAFk",
+    "title": "Cable Standing Pallof Press",
+    "author": "OPEX Fitness",
+    "thumbnail": "https://i.ytimg.com/vi/syYBcVbEAFk/hqdefault.jpg",
+    "start": 0,
+    "end": 30
   }
 };
 const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
