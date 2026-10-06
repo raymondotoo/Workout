@@ -1,0 +1,1 @@
+{"name":"form-workout","version":"1.0.0","private":true,"type":"module","scripts":{"dev":"python3 -m http.server 5173","check":"node --check app.js && node --check sw.js","test":"node --test tests/*.test.js"}}
